@@ -76,16 +76,22 @@ const Block = () => {
         <>
             <style>
                 {`
-                    .blockComp {
-                        width: 40px;
-                        height: 40px;
-                        border: 0.5px solid #2e2a27;
-                        transition: border-color 0.3s ease, border-width 0.3s ease;
-                    }
-    
-                    .highlight {
-                        border-color: white;
-                    }
+                   .blockComp {
+                    width: 40px;
+                    height: 40px;
+                    border-radius: 50%;
+                    border: 0.5px solid #131417;
+                    transition: border-color 0.3s ease, border-width 0.3s ease;
+                }
+                
+                .highlight {
+                    border-color: white;
+                    box-shadow: 
+                        0 0 10px 5px rgba(255, 255, 255, 0.2),
+                        inset 0 0 10px 5px rgba(255, 255, 255, 0.2); 
+                }
+                
+                
                 `}
             </style>
             <div className="fixed top-0 left-0 w-[100vw] h-[100vh] overflow-hidden z-[0]">

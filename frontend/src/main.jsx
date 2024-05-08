@@ -16,31 +16,48 @@ import Login from './pages/Auth/Login.jsx'
 import Register from './pages/Auth/Register.jsx'
 
 import Profile from './pages/User/Profile.jsx';
-import Home from './pages/User/Home.jsx';
-import Product from './pages/User/Product.jsx';
-import Cart from './pages/User/Cart.jsx';
+import Home from './pages/Home.jsx';
+import Favorites from './pages/Products/Favorites.jsx';
+import ProductInfo from './pages/Products/ProductInfo.jsx';
+import Cart from './pages/Cart.jsx';
+import Product from './Product.jsx';
 
 import AdminRoutes from './pages/Admin/AdminRoutes.jsx';
 import UserList from './pages/Admin/UserList.jsx';
-
+import CategoryList from './pages/Admin/CategoryList.jsx';
+import ProductList from './pages/Admin/productList.jsx';
+import ProductUpdate from './pages/Admin/ProductUpdate.jsx';
+import AllProducts from './pages/Admin/AllProducts.jsx';
+import Shipping from './pages/Orders/Shipping.jsx';
+import PlaceOrder from './pages/Orders/PlaceOrder.jsx';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
    <Route path="/" element={<App/>} >
       <Route path="/login" element={<Login/>} />
       <Route path="/register" element={<Register/>} />
+      <Route path='/' index={true} element={<Home />} />
+      <Route path='/favorites' index={true} element={<Favorites />} />
+      <Route path='/product/:id' index={true} element={<ProductInfo />} />
+      <Route path='/cart' index={true} element={<Cart />} />
+      <Route path='/products' index={true} element={<Product />} />
+
 
       <Route path='' element={<PrivateRoutes />}>
         <Route path='/profile' element={<Profile />} />
-        <Route path='/products' element={<Product />} />
-        <Route path='/carts' element={<Cart />} />
-        <Route path='/' element={<Home />} />
+        <Route path='/shipping' element={<Shipping />} />
+        <Route path='/placeorder' element={<PlaceOrder />} />
+        
       </Route>
 
 
       {/*Admin*/}
       <Route path='/admin' element={<AdminRoutes />}>
         <Route path='userList' element={<UserList />} />
+        <Route path='categoryList' element={<CategoryList />} />
+        <Route path='productList' element={<ProductList />} />
+        <Route path='allproductslist' element={<AllProducts />} />
+        <Route path='product/update/:_id' element={<ProductUpdate />} />
       </Route>
 
    </Route>

@@ -26,23 +26,25 @@ const Load = () => {
 
   useGSAP(() => {
     const textWrap = textWrapRef.current;
-    textWrap.innerHTML = textWrap.textContent.split('').map(char => `<span class="letter">${char}</span>`).join('');
+    textWrap.innerHTML = textWrap.textContent.split('').map(char => `<span className="letter">${char}</span>`).join('');
 
     anime.timeline({loop: false})
     .add({
-        targets: '.ml16 .letter',
+        targets: '.ml16',
         translateY: [-100, 0],
         easing: "easeOutExpo",
         duration: 1500,
         delay: (el, i) => 30 * i
     })
     .add({
-        targets: '.ml16 .letter',
+        targets: textWrap,
         translateY: [0,1000],
         easing: "easeOutExpo",
         duration: 3000,
         delay: (el, i) => 2000 + 30 * i
     });
+
+    
 
     gsap.to(".pre-loader", {
         scale: 0.5,

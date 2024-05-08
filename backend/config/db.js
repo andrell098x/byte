@@ -6,6 +6,7 @@ const connectDB = async () => {
     console.log(`BYTEBUY IS OFFICIALLY ONLINE 💻🖥️🌸`);
   } catch (error) {
     console.error(`ERROR: ${error.message}`);
+    process.exit(1);
   }
 };
 

@@ -38,13 +38,19 @@ const Profile = () => {
             toast.error('Password does not match')
         }
         else {
-            try {
-                const res = await updateProfile({_id: userInfo._id, username, email, password}).unwrap()
-                dispatch(setCredentials({...res}))
-                toast.success("User Profile updated!")
+            if (confirmPassword.length < 8){
+                toast.error('Passwords must exceed 8 characters')
+                return
             }
-            catch (error) {
-                toast.error(error?.data?.message || error.message)
+            else {
+                try {
+                    const res = await updateProfile({_id: userInfo._id, username, email, password}).unwrap()
+                    dispatch(setCredentials({...res}))
+                    toast.success("User Profile updated!")
+                }
+                catch (error) {
+                    toast.error(error?.data?.message || error.message)
+                }
             }
         }
     }
@@ -74,7 +80,7 @@ const Profile = () => {
                     <div className="mb-4">
                         <label className="block text-black mb-2">Password</label>
 
-                        <input type="text" placeholder='Enter Password' value={password} onChange={(e) => setPassword(e.target.value)} className='form-input p-4 rounded-sm w-full text-center'/>
+                        <input type="password" placeholder='Enter Password' value={password} onChange={(e) => setPassword(e.target.value)} className='form-input p-4 rounded-sm w-full text-center'/>
                     </div>
 
                     <div className="mb-4">

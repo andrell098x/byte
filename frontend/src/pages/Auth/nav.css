@@ -1,11 +1,10 @@
 #navigation-container {
-    width: 4%;
-    transition: width 0.3s ease-in-out;
-    overflow: hidden;
-}
-
-#navigation-container:hover {
-    width: 15%;
+    top: 0;
+    width: 100vw;
+    height: 7rem;
+    display: flex;
+    flex-direction: row;
+    padding: 0 8rem;
 }
 
 
@@ -14,10 +13,16 @@
     transition: opacity 0.2s ease-in-out;
 }
 
-#navigation-container:hover .nav-item-name {
+.underline {
     display: block;
-    opacity: 1;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: calc(1px + 0.6vw);
+    background-color: red;
 }
+
 
 
 

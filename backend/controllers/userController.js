@@ -3,6 +3,8 @@ import asyncHandler from '../middlewares/asyncHandler.js';
 import bcrypt from "bcryptjs";
 import createToken from '../utils/createToken.js';
 
+
+
 const createUser = asyncHandler(async (req, res) => {
     const { username, email, password } = req.body;
 
@@ -49,8 +51,6 @@ const loginUser = asyncHandler(async (req, res) => {
 
         if (isPasswordValid){
             createToken(res, existingUser._id)
-
-
 
             res.status(201).json({
                 _id: existingUser._id, 
@@ -147,15 +147,14 @@ const updateCurrentUserProfile = asyncHandler(async (req, res) => {
 
             await user.deleteOne({_id: user._id});
             res.json({message: "User Removed"});
-            res.status(404)
-            throw new Error("User not found")
+            
 
         }
         else {
-
+            res.status(404)
+            throw new Error("User not found")
         }
     })
-
 
 
 
