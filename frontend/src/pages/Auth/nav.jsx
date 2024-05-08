@@ -47,8 +47,11 @@ const Nav = () => {
     }
 
   return (
-    <div style={{zIndex: 998}} className={`flex p-4 text-[#2e2a27] bg-[#e3eae0]`} id='navigation-container'>
-
+    <div style={{zIndex: 998}} className={`flex p-4 text-[#2e2a27] bg-[#e3eae0] items-center`} id='navigation-container'>
+        
+        {userInfo && userInfo.isAdmin && <div className='mr-[3rem]'>
+                    <AdminMenu />
+                </div>}
         <svg version="1.0" xmlns="http://www.w3.org/2000/svg" className='h-[120px] w-[120px]'
                                  width="1280.000000pt" height="552.000000pt" viewBox="0 0 1280.000000 552.000000"
                                  preserveAspectRatio="xMidYMid meet">
@@ -82,19 +85,16 @@ const Nav = () => {
         </svg>
                   
                  
-
-        {userInfo && (
         <div className="flex flex-row justify-between items-center w-full">
             <div className='w-[20%] flex flex-row justify-evenly items-center'>
                 <Link to='/' className='flex relative'>
-                    <div className='flex items-center transition-transform transform hover:translate-y-[-0.5rem]'> 
+                    <div className='flex items-center transition-transform transform hover:translate-x-4'> 
                         <span className="block nav-item-name">Home</span>
-                        <span class="underline"></span>
                     </div>
                 </Link>
 
                 <Link to='/products' className='flex relative'>
-                    <div className='flex items-center transition-transform transform hover:translate-y-[-0.5rem]'>
+                    <div className='flex items-center transition-transform transform hover:translate-x-2'>
                         <span className="block nav-item-name">Products</span>
                     </div>
                 </Link>
@@ -115,14 +115,38 @@ const Nav = () => {
 
 
                 <Link to='/favorites' className='flex relative'>
-                    <div className='flex items-center transition-transform transform hover:translate-y-[-0.5rem]'>
+                    <div className='flex items-center transition-transform transform hover:translate-x-2'>
                         <FaHeart className='mr-2' size={26} />
                         <FavoritesCounter />
                     </div>
                 </Link>
+
+
+                {!userInfo && (
+                <ul className='flex flex-row items-center ml-[1rem]'>
+                    <li>
+                        <Link to='/login' className='flex items-center transition-transform transform hover:translate-x-2'>
+                            <AiOutlineLogin className='mr-2 mt-[3rem]' size={26} />
+                            <span className="hidden nav-item-name mt-[3rem]">Login</span>
+                        </Link>
+                    </li>
+                    <li>
+                        <Link to='/register' className='flex items-center transition-transform transform hover:translate-x-2'>
+                            <AiOutlineUserAdd className='mr-2 mt-[3rem]' size={26} />
+                            <span className="hidden nav-item-name mt-[3rem]">Register</span>
+                        </Link>
+                    </li>
+
+                    
+                </ul>
+                )}
+                
+                
+                
             </div>
+            
         </div>
-        )}
+
 
 
 
@@ -149,6 +173,7 @@ const Nav = () => {
               />
             </svg>
           )}
+          
                 
             </button>
 
@@ -164,19 +189,29 @@ const Nav = () => {
                             <Link to="/admin/orderlist" className='block px-4 py-2 hover:bg-gray-100'>Order</Link>
                             <Link to="/admin/userlist" className='block px-4 py-2 hover:bg-gray-100'>Users</Link>
                             
+
+                            
                         </>
+                        
                     )}
 
                     <Link to="/profile" className='block px-4 py-2 hover:bg-gray-100'>Profile</Link>
                     <button onClick={logoutHandler}
                     className='block px-4 py-2 hover:bg-gray-100'>Logout</button>
                 </ul>
+                
             )}
-            <div className='ml-[5rem]'>
-                <AdminMenu />
-            </div>
+            
             
         </div>
+        
+
+
+
+           
+
+
+        
     </div>
   )
 }

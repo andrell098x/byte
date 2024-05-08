@@ -29,7 +29,7 @@ const AdminMenu = () => {
         </button>
 
         {isMenuOp && (
-            <section className="bg-[#e8e8ed] p-4 fixed right-[7rem] top-[5rem] z-[999]">
+            <section className="bg-[#e8e8ed] p-4 fixed left-[7rem] top-[5rem] z-[999]">
                 <ul className="list-none mt-2">
                     <li>
                         <NavLink className='list-tem py-2 px-3 block mb-5 hover:bg-[gray] rounded-sm' to='/admin/dashboard' style={({isActive}) => ({
